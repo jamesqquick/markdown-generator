@@ -1,0 +1,29 @@
+<form name="{{formObj.name}}"  ngSubmit="submit()" name="{{formObj.name}}">
+    <h3>{{formObj.name}}</h3>
+    <div class="form-group" *ngFor="let input of formObj.inputs">
+        <div *ngIf="input.type === 'textarea'">
+            <label for="" class="sr-only">{{input.visibleName}}</label>
+            <textarea class="form-control" name="{{input.name}}" id="" cols="10"></textarea>
+        </div>
+        <div *ngIf="input.type !== 'textarea'">
+            <label for="" class="sr-only">{{input.visibleName}}</label>
+            <input class="form-control" placeholder="{{input.placeholder}}" name="{{input.name}}">
+        </div>
+    </div>
+</form>
+<!-- 
+
+ <form #linkForm="ngForm" (ngSubmit)="submitLink(linkForm)" name="linkForm"  novalidate>
+                <div class="form-group">
+                    <label for="linkTitle" class="sr-only">Title</label>
+                    <input type="text" class="form-control" name="title" [(ngModel)]="newLink.title" placeholder="Title" required #linkTitle="ngModel">
+                    <app-show-errors [control]="linkTitle"></app-show-errors>
+                    
+                </div>
+                <div class="form-group">
+                    <label for="linkUrl" class="sr-only">URL</label>
+                    <input type="url" class="form-control" name="URL" [(ngModel)]="newLink.url" placeholder="URL" 
+                    required #linkUrl="ngModel" pattern="{{urlPattern}}" >
+                    <app-show-errors [control]="linkUrl"></app-show-errors>
+
+                </div> -->

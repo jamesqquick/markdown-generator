@@ -1,0 +1,16 @@
+.item-options .item {
+    margin: 3px;
+}
+
+.section-item {
+    margin-left: 50px;
+}
+
+.flex {
+    display: flex;
+    align-items:center;
+}
+
+.section-display .panel-title {
+    flex-grow: 1;
+}
