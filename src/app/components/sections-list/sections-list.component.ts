@@ -9,9 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SectionsListComponent implements OnInit {
 
-    sections = [];
+    elements = [];
     preview:String = "";
-    sectionItems = sectionItemOptions;
+    elementItems = sectionItemOptions;
 
     constructor(private mdGeneratorService: MdGeneratorService) { }
     
@@ -20,42 +20,27 @@ export class SectionsListComponent implements OnInit {
     }
 
     getMarkdownString(){
-        //console.log(this.sections);
-        this.preview = this.mdGeneratorService.buildMarkdownString(this.sections);
-        //console.log(this.preview);
+        this.preview = this.mdGeneratorService.buildMarkdownString(this.elements);
     }
 
-    addSection(){
-        this.sections.push({name: `Section ${this.sections.length}`, items: []});
-        this.updatePreview();
-        
-    }
-
-    addSectionItem(section, item) {
-        section.items.push({...itemObjects[item]});
-        console.log(section.items);
-        this.getMarkdownString();
+    addElement(elementItem){
+        this.elements.push({ ...itemObjects[elementItem]} );
     }
 
     updatePreview(){
         this.getMarkdownString();
     }
 
-    itemPropertyChanged(event, item, property){
-        //console.log(event, item, property);
+    elementPropertyChanged(event, item, property){
         item[property] = event;
         this.updatePreview();
     }
 
-
-
     addListItem(item){
-        console.log(item);
         if(item.listItems){
             item.listItems.push({text:""});
         }
         this.updatePreview();
-        
     }
 
     deleteItem(array, item){

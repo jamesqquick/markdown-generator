@@ -2,85 +2,55 @@
     <div class="col-sm-6">
         <h1>Source</h1>
         <hr>
-        <div *ngFor="let section of sections">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <div class="section-display flex" *ngIf="!section.editing">
-                        <p class="panel-title"  (click)="section.editing = !section.editing" >{{section.name}}</p>
-                        <button class="btn btn-danger btn-xs" (click)="deleteItem(sections, section)"><span class="glyphicon glyphicon-trash" ></span></button>
-                    </div>
-                    <div class="section-edit" *ngIf="section.editing">
-                        <form #sectionEditForm="ngForm" >
-                            <div class="form-group" >
-                                <input type="text" class="form-control" name="sectionName"  (ngModelChange)="itemPropertyChanged($event, section, 'name')"  [ngModel]="section.name">
-                            </div>
-                            <!-- <button class="btn btn-danger btn-xs" (click)="section.editing = false" ><span class="glyphicon glyphicon-remove" ></span></button> -->
-                            <button class="btn btn-success btn-xs" type="submit" (click)="section.editing = false" ><span class="glyphicon glyphicon-ok" ></span></button>
-                        </form>
-                    </div>
-                    <hr>
-                    <div class="item-options">
-                        <button *ngFor="let item of sectionItems" class="btn btn-primary btn-xs item"(click)="addSectionItem(section, item)">{{item}}</button>
-                    </div>
-                </div>
-            </div>
-            <div class="section-items">
-                <div class="section-item" *ngFor="let item of section.items">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <div class="section-display flex" *ngIf="!item.editing">
-                                <p class="panel-title"  (click)="item.editing = !item.editing" >{{item.type}}</p>
-                                <button class="btn btn-danger btn-xs" (click)="deleteItem(section.items, item)"><span class="glyphicon glyphicon-trash" ></span></button>
-                            </div>
-                            
-                            <div class="section-edit" *ngIf="item.editing">
-                                <!-- <form #sectionEditForm="ngForm" >
-                                    <form-builder [formObj]="item"></form-builder>
-                                </form> -->
-                                <form >
-                                    <div *ngIf="item.inputType === 'text'">
-                                        <div class="form-group">
-                                            <label for="itemText" class="sr-only">Text</label>
-                                            <input type="text" class="form-control" name="itemText" placeholder="Text" (ngModelChange)="itemPropertyChanged($event, item, 'text')"  [ngModel]="item.text">
-                                        </div>
-                                        <div class="form-group" *ngIf="item.URL !== undefined">
-                                            <label for="itemURL" class="sr-only">URL</label>
-                                            <input type="text" class="form-control" name="itemURL"  placeholder="URL" (ngModelChange)="itemPropertyChanged($event, item, 'URL')"  [ngModel]="item.URL">
-                                        </div>
-                                        <button class="btn btn-success btn-xs" type="submit" (click)="item.editing = false" ><span class="glyphicon glyphicon-ok" ></span></button>
-                                        
+        <div class="item-options">
+            <button *ngFor="let item of elementItems" class="btn btn-primary btn-xs item" (click)="addElement(item)">{{item}}</button>
+        </div>
+        <div id="elements-list">
+            <div class="element" *ngFor="let element of elements" draggable>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="section-display flex" *ngIf="!element.editing">
+                            <p class="panel-title"  (click)="element.editing = !element.editing" >{{element.type}}</p>
+                            <button class="btn btn-danger btn-xs" (click)="deleteItem(elements, element)"><span class="glyphicon glyphicon-trash" ></span></button>
+                        </div> 
+                        <div class="section-edit" *ngIf="element.editing">
+                            <form >
+                                <div *ngIf="element.inputType === 'text'">
+                                    <div class="form-group">
+                                        <label for="elementText" class="sr-only">Text</label>
+                                        <input type="text" class="form-control" name="elementText" placeholder="Text" (ngModelChange)="elementPropertyChanged($event, element, 'text')"  [ngModel]="element.text">
                                     </div>
-                                    <div *ngIf="item.inputType === 'textarea'">
-                                        <div class="form-group">
-                                            <label for="itemText" class="sr-only">Text</label>
-                                            <textarea class="form-control" rows="5" name="itemText"  (ngModelChange)="itemPropertyChanged($event, item, 'text')"  [ngModel]="item.text"></textarea>
-                                        </div>
-                                        <button class="btn btn-success btn-xs" type="submit" (click)="item.editing = false" ><span class="glyphicon glyphicon-ok" ></span></button>
-                                        
+                                    <div class="form-group" *ngIf="element.URL !== undefined">
+                                        <label for="elementURL" class="sr-only">URL</label>
+                                        <input type="text" class="form-control" name="elementURL"  placeholder="URL" (ngModelChange)="elementPropertyChanged($event, element, 'URL')"  [ngModel]="element.URL">
                                     </div>
-                                    <div *ngIf="item.inputType === 'list'">
-                                        <div class="form-group" *ngFor="let li of item.listItems; let i = index">
-                                            <label for="itemText" class="sr-only">List Item</label>
-                                            <input type="text" class="form-control" rows="5" name="itemText-{{i}}"  (ngModelChange)="itemPropertyChanged($event, li, 'text')"  [ngModel]="li.text" placeholder="Item">
-                                        </div>
-                                        <button class="btn btn-primary btn-xs" (click)="addListItem(item)" ><span class="glyphicon glyphicon-plus" ></span></button>
-                                        <button class="btn btn-success btn-xs" type="submit" (click)="item.editing = false" ><span class="glyphicon glyphicon-ok" ></span></button>
-                                        
+                                    <button class="btn btn-success btn-xs" type="submit" (click)="element.editing = false" ><span class="glyphicon glyphicon-ok" ></span></button>
+                                    
+                                </div>
+                                <div *ngIf="element.inputType === 'textarea'">
+                                    <div class="form-group">
+                                        <label for="elementText" class="sr-only">Text</label>
+                                        <textarea class="form-control" rows="5" name="elementText"  (ngModelChange)="elementPropertyChanged($event, element, 'text')"  [ngModel]="element.text"></textarea>
                                     </div>
-                                    <!-- <button class="btn btn-danger btn-xs" (click)="item.editing = false" ><span class="glyphicon glyphicon-remove" ></span></button> -->
-                                </form>
-                            </div>
+                                    <button class="btn btn-success btn-xs" type="submit" (click)="element.editing = false" ><span class="glyphicon glyphicon-ok" ></span></button>
+                                    
+                                </div>
+                                <div *ngIf="element.inputType === 'list'">
+                                    <div class="form-group" *ngFor="let li of element.listItems; let i = index">
+                                        <label for="elementText" class="sr-only">List Item</label>
+                                        <input type="text" class="form-control" rows="5" name="elementText-{{i}}"  (ngModelChange)="elementPropertyChanged($event, li, 'text')"  [ngModel]="li.text" placeholder="Item">
+                                    </div>
+                                    <button class="btn btn-primary btn-xs" (click)="addListItem(element)" ><span class="glyphicon glyphicon-plus" ></span></button>
+                                    <button class="btn btn-success btn-xs" type="submit" (click)="element.editing = false" ><span class="glyphicon glyphicon-ok" ></span></button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <button class="btn btn-primary" (click)="addSection()" >Add Section</button>
-        
     </div>
     <div class="col-sm-6">
         <md-preview [preview]="preview"></md-preview>
-    </div>    
-        
-        
-    </div>
+    </div>            
+</div>

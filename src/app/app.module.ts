@@ -9,12 +9,14 @@ import { FormsModule } from '@angular/forms';
 import { SectionsListComponent } from './components/sections-list/sections-list.component';
 import { MdPreviewComponent } from './components/md-preview/md-preview.component'; 
 import { ClipboardModule } from 'ngx-clipboard';
+import { Ng2DragDropModule } from 'ng2-drag-drop';
+
 
 @NgModule({
   declarations: [AppComponent, MainNavbarComponent, FormBuilderComponent, SectionsListComponent, MdPreviewComponent
   ],
   imports: [
-    BrowserModule, FormsModule, ClipboardModule
+    BrowserModule, FormsModule, ClipboardModule, Ng2DragDropModule.forRoot()
   ],
   providers: [ MdGeneratorService],
   bootstrap: [AppComponent]

@@ -8,17 +8,9 @@ export class MdGeneratorService {
   constructor() { }
     
   public buildMarkdownString(data):String{
-        
         let retVal:String ="";
-        data.forEach(section => {
-            retVal += `# ${section.name} \n\n --- \n\n`;
-            if(section.items) {
-                section.items.forEach( item => {
-                    if(itemTemplates[item.type]){
-                        retVal += itemTemplates[item.type](item);
-                    }
-                })
-            }
+        data.forEach(element => {
+            retVal += itemTemplates[element.type](element);
         });
         return retVal;
   }
