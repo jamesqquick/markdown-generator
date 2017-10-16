@@ -26,14 +26,13 @@ export class SectionsListComponent implements OnInit {
     }
 
     addSection(){
-        //console.log("Adding section");
         this.sections.push({name: `Section ${this.sections.length}`, items: []});
         this.updatePreview();
         
     }
 
     addSectionItem(section, item) {
-        section.items.push(itemObjects[item]);
+        section.items.push({...itemObjects[item]});
         console.log(section.items);
         this.getMarkdownString();
     }
