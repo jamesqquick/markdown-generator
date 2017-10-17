@@ -1,3 +1,4 @@
+import { ElementServiceService } from './services/element-service.service';
 import { MdGeneratorService } from './services/md-generator.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -10,15 +11,15 @@ import { SectionsListComponent } from './components/sections-list/sections-list.
 import { MdPreviewComponent } from './components/md-preview/md-preview.component'; 
 import { ClipboardModule } from 'ngx-clipboard';
 import { Ng2DragDropModule } from 'ng2-drag-drop';
-
+import { HomeComponentComponent } from './components/home-component/home-component.component';
 
 @NgModule({
-  declarations: [AppComponent, MainNavbarComponent, FormBuilderComponent, SectionsListComponent, MdPreviewComponent
+  declarations: [AppComponent, MainNavbarComponent, FormBuilderComponent, SectionsListComponent, MdPreviewComponent, HomeComponentComponent
   ],
   imports: [
     BrowserModule, FormsModule, ClipboardModule, Ng2DragDropModule.forRoot()
   ],
-  providers: [ MdGeneratorService],
+  providers: [ MdGeneratorService, ElementServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

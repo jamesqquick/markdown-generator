@@ -1,0 +1,23 @@
+<div class="navigation-icons flex flex-center">
+    <div class="btn-group" role="group">
+        <button type="button" class="btn btn-default" [ngClass]="{active: tab === tabs.EDIT}" (click)="tab = tabs.EDIT">Source</button>
+        <button type="button" class="btn btn-default" [ngClass]="{active: tab === tabs.PREVIEW}" (click)="tab = tabs.PREVIEW">Preview</button>
+        <button type="button" class="btn btn-default" [ngClass]="{active: tab === tabs.MARKDOWN}" (click)="tab = tabs.MARKDOWN">Markdown</button>
+    </div>
+</div>
+
+<hr>
+
+<button class="btn btn-default pull-right" type="button" ngxClipboard [cbContent]="preview" (cbOnSuccess)="successfulCopy()" [class.btn-success]= "isCopied"><span class="glyphicon glyphicon-duplicate"></span></button>
+
+<div *ngIf="tab === tabs.EDIT">
+    <sections-list [preview]="preview"></sections-list>
+</div>  
+
+<div *ngIf="tab === tabs.PREVIEW">
+    <md-preview [preview]="preview"></md-preview>
+</div>    
+
+<div *ngIf="tab === tabs.MARKDOWN">
+    <pre>{{preview}}</pre>
+</div> 

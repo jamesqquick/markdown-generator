@@ -1,6 +1,7 @@
+import { ElementServiceService } from './../../services/element-service.service';
 import { MdGeneratorService } from './../../services/md-generator.service';
-import { sampleData, itemTemplates, sectionItemOptions, formObjects, itemObjects } from './../../ItemData';
-import { Component, OnInit } from '@angular/core';
+import { elementTemplates, elementItemOptions, elementObjects } from './../../ItemData';
+import { Component, OnInit, Input } from '@angular/core';
 import { DropEvent } from 'ng2-drag-drop';
 
 @Component({
@@ -12,25 +13,25 @@ import { DropEvent } from 'ng2-drag-drop';
 
 export class SectionsListComponent implements OnInit {
 
-    tabs = Tabs;
-    tab;
-    elements = [{type:"h1", inputType:"text", text:""}, {type:"h2", inputType:"text", text:""}];
-    preview:String = "";
-    elementItems = sectionItemOptions;
+    @Input('preview') preview:String;
 
-    constructor(private mdGeneratorService: MdGeneratorService) { }
+    elements:Array<any>;
+    elementItems = elementItemOptions;
+
+    constructor(private mdGeneratorService: MdGeneratorService, private elementServiceService: ElementServiceService) { }
     
     ngOnInit() {
+        //TODO Call Service to get elements
+        this.elements = this.elementServiceService.getElements();
         this.updatePreview();
-        this.tab = this.tabs.SOURCE
     }
 
     getMarkdownString(){
-        this.preview = this.mdGeneratorService.buildMarkdownString(this.elements);
+        this.mdGeneratorService.buildMarkdownString(this.elements);
     }
 
     addElement(elementItem){
-        this.elements.push({ ...itemObjects[elementItem]} );
+        this.elements = this.elementServiceService.addElement(elementItem);
     }
 
     updatePreview(){
@@ -38,42 +39,26 @@ export class SectionsListComponent implements OnInit {
     }
 
     elementPropertyChanged(event, item, property){
+        //TODO Call Service to update element        
         item[property] = event;
         this.updatePreview();
     }
 
-    addListItem(item){
-        if(item.listItems){
-            item.listItems.push({text:""});
-        }
+    addListItem(listElement){
+        this.elements = this.elementServiceService.addListItem(listElement);
         this.updatePreview();
     }
 
-    deleteItem(array, item){
-        console.log(array);
-        var index = array.indexOf(item);
-        if(index > -1) {
-            array.splice(index, 1);
-        }
-        this.getMarkdownString();
+    deleteItem(element){
+        this.elements = this.elementServiceService.deleteElement(element);
         this.updatePreview();
-        
     }
 
     //Drag and Drop
     dropElement(e: DropEvent, dropIndex){
-        const dragIndex = e.dragData;
-        //get copy of dragged element
-        const draggedItem = this.elements[dragIndex];
-        //splice the dragged element out of array
-        this.elements.splice(dragIndex, 1);
-        //Insert dragged item into array at new position
-        this.elements.splice(dropIndex, 0, draggedItem);
+        this.elements = this.elementServiceService.reorderElementsOnDrop(e.dragData, dropIndex);
+        //Update Preview
+        this.updatePreview();
     }
 
-}
-
-enum Tabs {
-    PREVIEW,
-    SOURCE
 }

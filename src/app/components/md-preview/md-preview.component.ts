@@ -8,7 +8,6 @@ import {markdown} from 'markdown';
 })
 export class MdPreviewComponent implements OnInit {
 
-    isCopied:boolean = false;
     @Input() preview:String;
     
     constructor() { }
@@ -20,13 +19,4 @@ export class MdPreviewComponent implements OnInit {
     convertMDToHTML(){
         return markdown.toHTML(this.preview);
     }
-
-    successfulCopy(){
-        this.isCopied = true;
-        setTimeout(() => {
-            this.isCopied = false;
-            console.log(this.isCopied);
-        }, 500)
-    }
-
 }

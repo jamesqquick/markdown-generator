@@ -1,28 +1,9 @@
 .item-options .item {
     margin: 3px;
 }
-.item-options{
-    
-}
-
-.margin-bottom {
-    margin-bottom: 10px;
-}
 
 .section-item {
     margin-left: 50px;
-}
-
-.flex {
-    display: flex;
-}
-
-.flex-center {
-    align-items:center;
-    justify-content: center;
-}
-
-.section-display{
 }
 
 .section-display .panel-title {
@@ -37,7 +18,6 @@
     margin-bottom: 10px;
 }
 
-
 /* Drag and Drop Classes */
 .dragging {
 
@@ -51,6 +31,4 @@
     height: 500px;
     background: blue;
 }
-
-/* Navigation */
 

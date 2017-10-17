@@ -1,9 +1,4 @@
 <div class="preview">
-    <!-- <pre *ngIf="preview">{{preview}}</pre> -->
-    <button class="btn btn-default pull-right" type="button" ngxClipboard [cbContent]="preview" (cbOnSuccess)="successfulCopy()" [class.btn-success]= "isCopied">Copy</button>
-
     <div [innerHTML]="convertMDToHTML()">
-        
     </div>
-    
 </div>

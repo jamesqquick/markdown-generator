@@ -1,4 +1,4 @@
-export const itemTemplates  = {
+export const elementTemplates  = {
         link: (data) => `[${data.text}](${data.URL})\n\n`,
         image: (data) => `![${data.text}](${data.URL})\n\n`,
         text: (data) => `${data.text}\n\n`,
@@ -19,9 +19,9 @@ export const itemTemplates  = {
         }
 }    
 
-export const sectionItemOptions = ["link", "image", "code", "h1", "h2", "h3", "h4", "h5", "h6", "text", "list", "quote"];
+export const elementItemOptions = ["link", "image", "code", "h1", "h2", "h3", "h4", "h5", "h6", "text", "list", "quote"];
 
-export const itemObjects = {
+export const elementObjects = {
     h1: {type:"h1", inputType:"text", text:""},
     h2: {type:"h2",inputType:"text", text:""},
     h3: {type:"h3",inputType:"text", text:""},
@@ -35,74 +35,3 @@ export const itemObjects = {
     quote: {type:"quote", inputType:"textarea", text:""},
     list: {type:"list", inputType:"list", listItems:[{text:""}]}
 }
-
-export const formObjects = {
-        link: {
-            name:"link",
-                inputs: [ 
-                { type:"text", visibleName: "Link Text",name: "text", placeholder:"Link Text" },
-                { type:"text", visibleName: "Link URL", name: "URL", placeholder:"Link URL" }
-            ]
-        },
-        image: {
-            name:"image",
-                inputs: [ 
-                { type:"text", visibleName: "Image Text",name: "text", placeholder:"Image Text" },
-                { type:"text", visibleName: "Image URL", name: "URL", placeholder:"Image URL" }
-            ]
-        },
-        code: {
-            name:"code",
-                inputs: [ 
-                { type:"textarea", visibleName: "Code", name: "codeText", placeholder:"Code" }//How to handle text area differently
-            ]
-        },
-        header: {
-            name:"header",
-                inputs: [ 
-                { type:"text", visibleName: "Header", name: "headerText", placeholder:"Header" }
-            ]
-        },
-        text: {
-            name: "text",
-            inputs: [
-                {type:"textarea", visibleName: "Text", name: "text"}
-            ]
-        },
-        quote: {
-            name: "quote",
-            inputs: [
-                {type:"textarea", visibleName: "Quote", name: "quote"}
-            ]
-        },
-        list: {
-            name: "list",
-            inputs: [
-                {type:"text", visibleName: "List Item", name: "listItem", placeholder:"List Item"}
-            ]
-        }
-    }
-
-//intro section
-export const sampleData = 
-    [ 
-        {
-            name:"Intro",
-            items: [
-                {   
-                    type:"text",
-                    text: "Learn Build Teach is a great platform"
-                },
-                {
-                    type:"image",
-                    URL:"www.jamesqquick.com",
-                    text:"James Quick"
-                },
-                {   
-                    type:"h1",
-                    text: "H1 Header"
-                },
-            ]
-        }
-    
-    ];
