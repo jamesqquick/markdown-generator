@@ -1,6 +1,3 @@
-<h1>Preview</h1>
-
-<hr>
 <div class="preview">
     <!-- <pre *ngIf="preview">{{preview}}</pre> -->
     <button class="btn btn-default pull-right" type="button" ngxClipboard [cbContent]="preview" (cbOnSuccess)="successfulCopy()" [class.btn-success]= "isCopied">Copy</button>

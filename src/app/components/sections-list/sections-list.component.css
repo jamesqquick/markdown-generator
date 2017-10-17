@@ -1,6 +1,13 @@
 .item-options .item {
     margin: 3px;
 }
+.item-options{
+    
+}
+
+.margin-bottom {
+    margin-bottom: 10px;
+}
 
 .section-item {
     margin-left: 50px;
@@ -8,9 +15,42 @@
 
 .flex {
     display: flex;
+}
+
+.flex-center {
     align-items:center;
+    justify-content: center;
+}
+
+.section-display{
 }
 
 .section-display .panel-title {
     flex-grow: 1;
 }
+
+.section-display .panel-title:hover {
+    cursor: pointer;
+}
+
+.panel{
+    margin-bottom: 10px;
+}
+
+
+/* Drag and Drop Classes */
+.dragging {
+
+}
+
+.drag-over {
+    box-shadow: 0 0 2px gray;
+}
+
+.drag-transition {
+    height: 500px;
+    background: blue;
+}
+
+/* Navigation */
+
