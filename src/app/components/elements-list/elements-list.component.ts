@@ -54,6 +54,11 @@ export class ElementsListComponent implements OnInit {
         this.updatePreview();
     }
 
+    duplicateElement(element){
+        this.elements = this.elementServiceService.duplicateElement(element);
+        this.updatePreview();
+    }
+
     //Drag and Drop
     dropElement(e: DropEvent, dropIndex){
         this.elements = this.elementServiceService.reorderElementsOnDrop(e.dragData, dropIndex);

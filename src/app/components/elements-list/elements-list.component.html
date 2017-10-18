@@ -1,3 +1,4 @@
+
 <div id="elements-list">
     <div class="item-options margin-bottom">
         <button *ngFor="let item of elementItems" class="btn btn-primary btn-xs item" (click)="addElement(item)">{{item}}</button>
@@ -9,12 +10,18 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <div class="element-display flex flex-center" [ngClass]="{'margin-bottom':element.editing}" >
-                    <span class="glyphicon glyphicon-menu-hamburger drag-handle" ></span>
-                    <p class="panel-title"  >{{element.type}}</p>
-                    <button class="btn btn-primary btn-xs" (click)="element.editing = !element.editing"><span class="glyphicon glyphicon-pencil" ></span></button>
-                    <button class="btn btn-danger btn-xs" (click)="deleteItem(element)"><span class="glyphicon glyphicon-trash" ></span></button>
-                    
-                </div> 
+                    <span class="glyphicon glyphicon-menu-hamburger glyphicon-btn drag-handle" ></span>
+                    <p class="panel-title no-wrap-ellipses">{{element.type}} {{element.text ? '- ' + element.text: ''}}</p>
+
+                    <div class="glyphicon glyphicon-pencil glyphicon-btn" title="Edit"  (click)="element.editing = !element.editing"></div>
+                    <div class="glyphicon glyphicon-duplicate glyphicon-btn" title="Duplicate"  (click)="duplicateElement(element)"></div>
+                    <div class="glyphicon glyphicon-trash glyphicon-btn" title="Delete"  (click)="deleteItem(element)"></div>
+
+                    <!-- <button class="btn btn-primary btn-xs" title="Edit" (click)="element.editing = !element.editing"><span class="glyphicon glyphicon-pencil" ></span></button>
+                    <button class="btn btn-primary btn-xs" title="Duplicate" (click)="duplicateElement(element)"><span class="glyphicon glyphicon-duplicate" ></span></button>
+                    <button class="btn btn-danger btn-xs" title="Delete" (click)="deleteItem(element)"><span class="glyphicon glyphicon-trash" ></span></button> -->
+                </div>
+
                 <div class="element-edit" *ngIf="element.editing">
                     <form >
                         <div *ngIf="element.inputType === 'text'">

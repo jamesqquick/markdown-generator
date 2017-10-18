@@ -1,8 +1,11 @@
 - Load from templates
 - User Auth and Save for future
 - Inline Elements
-- Display 'text' property along with element type when not editing
 - collapse all
 - add elements - line break, tables, 
 - duplicate elements
 - How to use?
+
+
+DONE
+- Display 'text' property along with element type when not editing

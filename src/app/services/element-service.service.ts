@@ -35,6 +35,13 @@ export class ElementServiceService {
         return this.elements;
     }
 
+    duplicateElement(element){
+        var newElement = { ... element};
+        newElement.editing = false;
+        this.elements.push(newElement);
+        return this.elements;
+    }
+
     addListItem(listElement){
         if(listElement.listItems){
             listElement.listItems.push({text:""});

@@ -25,6 +25,9 @@
 
     <button class="btn btn-default pull-right" type="button" ngxClipboard [cbContent]="preview" (cbOnSuccess)="successfulCopy()" [class.btn-success]= "isCopied"><span class="glyphicon glyphicon-duplicate"></span></button>
 
+    <!-- <div class="glyphicon glyphicon-duplicate glyphicon-btn pull-right" title="Copy to clipboard" 
+    ngxClipboard [cbContent]="preview" (cbOnSuccess)="successfulCopy()" ></div> -->
+
     <div *ngIf="tab === tabs.EDIT">
         <elements-list [preview]="preview"></elements-list>
     </div>  

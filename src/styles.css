@@ -20,3 +20,19 @@
     margin-top: 10px;
 }
 
+.no-wrap-ellipses{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+.glyphicon-btn {
+    margin: 0 5px;
+    color: #777;
+}
+
+.glyphicon-btn:hover {
+    color: #333;
+    cursor: pointer;
+}
