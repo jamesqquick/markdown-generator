@@ -12,7 +12,11 @@ export class ElementServiceService {
     }
 
     addElement(elementItem){
-        this.elements.push({ ...elementObjects[elementItem]} );
+        var newElement = {... elementObjects[elementItem]};
+        if(elementItem === 'list'){
+            newElement.listItems = [];
+        }
+        this.elements.push( newElement );
         return this.elements;
     }
 

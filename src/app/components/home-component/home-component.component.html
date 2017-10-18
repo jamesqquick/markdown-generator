@@ -1,23 +1,40 @@
-<div class="navigation-icons flex flex-center">
-    <div class="btn-group" role="group">
-        <button type="button" class="btn btn-default" [ngClass]="{active: tab === tabs.EDIT}" (click)="tab = tabs.EDIT">Source</button>
-        <button type="button" class="btn btn-default" [ngClass]="{active: tab === tabs.PREVIEW}" (click)="tab = tabs.PREVIEW">Preview</button>
-        <button type="button" class="btn btn-default" [ngClass]="{active: tab === tabs.MARKDOWN}" (click)="tab = tabs.MARKDOWN">Markdown</button>
+<div *ngIf="showTutorial">
+    
+    <div id="tutorial-carousel" class="flex flex-center flex-vertical">
+        <div class="flex flex-center" *ngIf="currentImageIndex < tutorialTexts.length-1">
+            <span class="glyphicon glyphicon-chevron-left carousel-arrow" (click)="previousSlide()"></span>
+            <div class="text-container flex flex-center bg-primary">
+                <p class="carousel-text">{{tutorialTexts[currentImageIndex]}}</p>
+            </div>
+            <span class="glyphicon glyphicon-chevron-right carousel-arrow" (click)="nextSlide()"></span>
+        </div>
+        <button class="btn btn-primary btn-lg margin-top" [ngClass]="{'btn-success':currentImageIndex === tutorialTexts.length-1}" (click)="showTutorial = false">{{currentImageIndex === tutorialTexts.length-1 ? 'Get Started': 'Skip'}}</button>
     </div>
 </div>
+<div>
 
-<hr>
+    <div class="navigation-icons flex flex-center">
+        <div class="btn-group" role="group">
+            <button type="button" class="btn btn-default" [ngClass]="{active: tab === tabs.EDIT}" (click)="tab = tabs.EDIT">Edit</button>
+            <button type="button" class="btn btn-default" [ngClass]="{active: tab === tabs.PREVIEW}" (click)="tab = tabs.PREVIEW">Preview</button>
+            <button type="button" class="btn btn-default" [ngClass]="{active: tab === tabs.MARKDOWN}" (click)="tab = tabs.MARKDOWN">Markdown</button>
+        </div>
+    </div>
 
-<button class="btn btn-default pull-right" type="button" ngxClipboard [cbContent]="preview" (cbOnSuccess)="successfulCopy()" [class.btn-success]= "isCopied"><span class="glyphicon glyphicon-duplicate"></span></button>
+    <hr>
 
-<div *ngIf="tab === tabs.EDIT">
-    <sections-list [preview]="preview"></sections-list>
-</div>  
+    <button class="btn btn-default pull-right" type="button" ngxClipboard [cbContent]="preview" (cbOnSuccess)="successfulCopy()" [class.btn-success]= "isCopied"><span class="glyphicon glyphicon-duplicate"></span></button>
 
-<div *ngIf="tab === tabs.PREVIEW">
-    <md-preview [preview]="preview"></md-preview>
-</div>    
+    <div *ngIf="tab === tabs.EDIT">
+        <elements-list [preview]="preview"></elements-list>
+    </div>  
 
-<div *ngIf="tab === tabs.MARKDOWN">
-    <pre>{{preview}}</pre>
-</div> 
+    <div *ngIf="tab === tabs.PREVIEW">
+        <md-preview [preview]="preview"></md-preview>
+    </div>    
+
+    <div *ngIf="tab === tabs.MARKDOWN">
+        <pre *ngIf="preview">{{preview}}</pre>
+    </div> 
+</div>
+

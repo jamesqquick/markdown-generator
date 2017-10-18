@@ -8,6 +8,15 @@
     justify-content: center;
 }
 
+.flex-vertical {
+    flex-direction: column;
+}
+
 .margin-bottom {
     margin-bottom: 10px;
 }
+
+.margin-top {
+    margin-top: 10px;
+}
+

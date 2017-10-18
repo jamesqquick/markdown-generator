@@ -2,15 +2,15 @@
     margin: 3px;
 }
 
-.section-item {
+.element-item {
     margin-left: 50px;
 }
 
-.section-display .panel-title {
+.element-display .panel-title {
     flex-grow: 1;
 }
 
-.section-display .panel-title:hover {
+.drag-handle:hover{
     cursor: pointer;
 }
 
@@ -24,11 +24,15 @@
 }
 
 .drag-over {
-    box-shadow: 0 0 2px gray;
+    box-shadow: 0 0 1px #333;
 }
 
 .drag-transition {
     height: 500px;
     background: blue;
+}
+
+.drag-handle {
+    margin: 0 10px;
 }
 

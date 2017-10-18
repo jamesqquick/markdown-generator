@@ -33,5 +33,5 @@ export const elementObjects = {
     image: {type:"image", inputType:"text", URL:"", text:""},
     code: {type:"code", inputType:"textarea", text:""},
     quote: {type:"quote", inputType:"textarea", text:""},
-    list: {type:"list", inputType:"list", listItems:[{text:""}]}
+    list: {type:"list", inputType:"list"}
 }

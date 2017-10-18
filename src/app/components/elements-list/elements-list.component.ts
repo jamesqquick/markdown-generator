@@ -5,13 +5,13 @@ import { Component, OnInit, Input } from '@angular/core';
 import { DropEvent } from 'ng2-drag-drop';
 
 @Component({
-  selector: 'sections-list',
-  templateUrl: './sections-list.component.html',
-  styleUrls: ['./sections-list.component.css']
+  selector: 'elements-list',
+  templateUrl: './elements-list.component.html',
+  styleUrls: ['./elements-list.component.css']
 })
 
 
-export class SectionsListComponent implements OnInit {
+export class ElementsListComponent implements OnInit {
 
     @Input('preview') preview:String;
 

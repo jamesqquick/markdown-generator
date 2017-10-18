@@ -2,15 +2,20 @@
     <div class="item-options margin-bottom">
         <button *ngFor="let item of elementItems" class="btn btn-primary btn-xs item" (click)="addElement(item)">{{item}}</button>
     </div>
-    <div class="element" *ngFor="let element of elements, let i = index" [draggable] [dragClass]="'dragging'" dragTransitClass="'drag-transition'"
-    [dragOverClass]="'drag-over'" [dragData]="i" droppable (onDrop)="dropElement($event, i)">
+    <div class="element" *ngFor="let element of elements, let i = index" 
+    [draggable] [dragClass]="'dragging'" dragTransitClass="'drag-transition'" 
+    [dragOverClass]="'drag-over'" [dragData]="i" [dragHandle]="'.drag-handle'" 
+    droppable (onDrop)="dropElement($event, i)">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <div class="section-display flex flex-center" [ngClass]="{'margin-bottom':element.editing}" >
-                    <p class="panel-title"  (click)="element.editing = !element.editing" >{{element.type}}</p>
+                <div class="element-display flex flex-center" [ngClass]="{'margin-bottom':element.editing}" >
+                    <span class="glyphicon glyphicon-menu-hamburger drag-handle" ></span>
+                    <p class="panel-title"  >{{element.type}}</p>
+                    <button class="btn btn-primary btn-xs" (click)="element.editing = !element.editing"><span class="glyphicon glyphicon-pencil" ></span></button>
                     <button class="btn btn-danger btn-xs" (click)="deleteItem(element)"><span class="glyphicon glyphicon-trash" ></span></button>
+                    
                 </div> 
-                <div class="section-edit" *ngIf="element.editing">
+                <div class="element-edit" *ngIf="element.editing">
                     <form >
                         <div *ngIf="element.inputType === 'text'">
                             <div class="form-group">
@@ -34,6 +39,7 @@
                             <div class="clearfix"></div>
                         </div>
                         <div *ngIf="element.inputType === 'list'">
+                            <p *ngIf="element.listItems.length < 1" class="text-center">Click '+' to add a list item</p>
                             <div class="form-group" *ngFor="let li of element.listItems; let i = index">
                                 <label for="elementText" class="sr-only">List Item</label>
                                 <input type="text" class="form-control" rows="5" name="elementText-{{i}}"  (ngModelChange)="elementPropertyChanged($event, li, 'text')"  [ngModel]="li.text" placeholder="Item">

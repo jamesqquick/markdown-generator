@@ -1,0 +1,46 @@
+.carousel-arrow:hover {
+    cursor: pointer;
+   
+}
+
+.carousel-arrow {
+    margin: 0 10px;
+}
+
+#tutorial-carousel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.3);
+    z-index: 5;
+}
+
+#tutorial-carousel .text-container {
+    padding: 50px 50px;
+    border-radius: 10px;
+    color: white;
+}
+
+#tutorial-carousel .text-container .carousel-text {
+    font-size: 32px;
+    max-width: 500px;
+    text-align: center;
+}
+
+.carousel-arrow {
+    font-size: 24px;
+    color: gray;
+}
+
+.carousel-arrow:hover {
+    color: #333;
+}
+/* .carousel-image{
+    box-shadow: 0 0 3px #333;
+    max-height: 50%;
+}
+
+.img-container {
+} */
