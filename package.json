@@ -28,7 +28,8 @@
     "ng2-drag-drop": "^2.9.2",
     "ngx-clipboard": "^8.1.1",
     "rxjs": "^5.4.1",
-    "zone.js": "^0.8.14"
+    "zone.js": "^0.8.14",
+    "express": "^4.16.2"
   },
   "devDependencies": {
     "@angular/cli": "1.2.7",
