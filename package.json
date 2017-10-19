@@ -4,12 +4,14 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "pstart": "node server/app.js"
+    "start": "node server/app.js"
+  },
+  "engines": {
+    "node": "8.6.0"
   },
   "private": true,
   "dependencies": {
@@ -24,12 +26,12 @@
     "@angular/router": "^4.0.0",
     "bootstrap": "^3.3.7",
     "core-js": "^2.4.1",
+    "express": "^4.16.2",
     "jquery": "^3.2.1",
     "ng2-drag-drop": "^2.9.2",
     "ngx-clipboard": "^8.1.1",
     "rxjs": "^5.4.1",
-    "zone.js": "^0.8.14",
-    "express": "^4.16.2"
+    "zone.js": "^0.8.14"
   },
   "devDependencies": {
     "@angular/cli": "1.2.7",
