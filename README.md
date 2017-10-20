@@ -48,6 +48,15 @@ To get started with Markdown Generator, navigate to [https://md-generator.heroku
 
 ---
 
+## Author Info
+
+- Twitter - [@jamesqquick](https://twitter.com/jamesqquick)
+- Website - [James Q Quick](https://jamesqquick.com)
+
+[Back To The Top](#markdown-generator)
+
+---
+
 ## License
 
 MIT License
@@ -71,14 +80,5 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
-[Back To The Top](#markdown-generator)
-
----
-
-## Author Info
-
-- Twitter - [@jamesqquick](https://twitter.com/jamesqquick)
-- Website - [James Q Quick](https://jamesqquick.com)
 
 [Back To The Top](#markdown-generator)
